@@ -13,7 +13,7 @@ function App() {
       params: {
         lat: lat,
         lon: long,
-        appid: REACT_APP_OPEN_WHEATHER_KEY="24dbf2e4c44893b90245335fe2a20902,",
+        appid: "24dbf2e4c44893b90245335fe2a20902",
         lang: 'pt',
         units: 'metric'
       }
