@@ -1,8 +1,43 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
+import Text from './Text';
+import Styled from 'styled-components';
 export default App;
 
+const ClimaSection = Styled.section`
+align-item: center;
+justify-content: center;
+width: 100%;
+`
 
+const ClimaDiv = Styled.div`
+position: relative;
+width: 100%;
+flex-wrap: nowrap;
+`
+
+const ClimaTitle = Styled.h2`
+font-size: 40px;
+wrap: no-wrap;
+left: 50%;
+position: absolute;
+transform: translateX(-50%);
+`
+
+const ClimaDiv2 = Styled.div`
+flex: 1;
+position: relative;
+width: 100%;
+`
+
+const ClimaList = Styled.ul`
+font-size: 25px;
+list-style: none;
+left: 50%;
+position: absolute;
+transform: translateX(-50%);
+margin-top: 7%
+`
 
 function App() {
   const [location, setLocation] = useState(false);
@@ -29,31 +64,32 @@ function App() {
     })
   }, [])
 
-  if (location == false) {
+  if (location === false) {
     return (
       <Fragment>
         Você precisa habilitar a localização no browser o/
       </Fragment>
     )
-  } else if (weather == false) {
+  } else if (weather === false) {
     return (
-      <Fragment>
-        Carregando o clima...
-      </Fragment>
+      <Text />
     )
   } else {
     return (
-      <Fragment>
-        <h3>Clima nas suas Coordenadas ({weather['weather'][0]['description']})</h3>
-        <hr/>
-        <ul>
-          <li>Temperatura atual: {weather['main']['temp']}°</li>
-          <li>Temperatura máxima: {weather['main']['temp_max']}°</li>
-          <li>Temperatura minima: {weather['main']['temp_min']}°</li>
-          <li>Pressão: {weather['main']['pressure']} hpa</li>
-          <li>Humidade: {weather['main']['humidity']}%</li>
-        </ul>
-      </Fragment>
+      <ClimaSection>
+        <ClimaDiv>
+          <ClimaTitle>Clima nas suas Coordenadas ({weather['weather'][0]['description']})</ClimaTitle>
+        </ClimaDiv>
+        <ClimaDiv2>
+          <ClimaList>
+            <li>Temperatura atual: {weather['main']['temp']}°</li>
+            <li>Temperatura máxima: {weather['main']['temp_max']}°</li>
+            <li>Temperatura minima: {weather['main']['temp_min']}°</li>
+            <li>Pressão: {weather['main']['pressure']} hpa</li>
+            <li>Humidade: {weather['main']['humidity']}%</li>
+          </ClimaList>
+        </ClimaDiv2>
+      </ClimaSection>
     );
   }
 }
