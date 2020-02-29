@@ -48,7 +48,7 @@ function App() {
       params: {
         lat: lat,
         lon: long,
-        appid: "24dbf2e4c44893b90245335fe2a20902",
+        appid: "9ebce9c7",
         lang: 'pt',
         units: 'metric'
       }
